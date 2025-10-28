@@ -1,0 +1,11 @@
+[project]
+name = "cpwfit"
+version = "0.0.1"
+description = "CPW resonator fitting: Qi 7-parameter model & frequency shift."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy","scipy","pandas","matplotlib"]
+
+[build-system]
+requires = ["setuptools>=68","wheel"]
+build-backend = "setuptools.build_meta"
