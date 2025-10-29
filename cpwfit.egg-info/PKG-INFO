@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: cpwfit
+Version: 0.0.1
+Summary: CPW resonator fitting: Qi 7-parameter model & frequency shift.
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Dynamic: license-file
