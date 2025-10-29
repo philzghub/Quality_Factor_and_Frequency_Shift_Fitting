@@ -44,7 +44,7 @@ def load_data(filename):
 def Q_TLS(T, Q_TLS_0, beta1, beta2, D):
     omega = 2 * np.pi * f_res
     arg = hbar * omega / (2 * kB * T)
-    numerator = np.sqrt(1 + (NBAR_CONST * beta2 / (D * T**beta1)) * np.tanh(arg))
+    numerator = np.sqrt(1 + (NBAR_CONST ** beta2 / (D * T**beta1)) * np.tanh(arg))
     denominator = np.tanh(arg)
     return Q_TLS_0 * (numerator / denominator)
 
