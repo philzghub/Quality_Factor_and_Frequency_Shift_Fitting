@@ -98,7 +98,7 @@ Import your own CSV files for the Qint and Δf/f. Match the example files for co
 Example: 
 
 ```bash
-Temperatur (mK);Power (dBm);Qint
+Temperature (mK);Power (dBm);Qint
 100;-140;1.64e6
 200;-140;1.53e6
 300;-140;2.44e6
@@ -117,4 +117,5 @@ Temperatur (mK);Power (dBm);Qint
 1600;-140;1.306835e6
 1700;-140;861599
 ```
+
 
