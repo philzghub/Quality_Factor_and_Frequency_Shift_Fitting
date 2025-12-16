@@ -78,7 +78,7 @@ $$
 $$
 
 
-Cite paper from which these equations have been derived
+J. Gao, “The Physics of Superconducting Microwave Resonators,” PhD thesis, Caltech (2008).
 
 # Quickstart
 
@@ -117,5 +117,38 @@ Temperature (mK);Power (dBm);Qint
 1600;-140;1.306835e6
 1700;-140;861599
 ```
+## Usage
+
+### 1) Fit all Qint curves (semilog)
+```bash
+python -m cpwfit.models.qint_allcurves_semilog \
+  --csv examples/csv_data/qint_all.csv \
+  --out examples/plots/qint_semilog.png \
+  --save-best examples/plots/qint_best.json
+```
+### 2) Fit a single curve
+```bash
+python -m cpwfit.models.qint_singlecurve \
+  --csv examples/csv_data/qint_single.csv \
+  --out examples/plots/qint_single.png \
+  --save-best examples/plots/qint_single_best.json
+```
+### 3) Fit Frequency-shift
+```bash
+python -m cpwfit.models.freqshift_loss_channels \
+  --csv examples/csv_data/freqshift.csv \
+  --out examples/plots/freqshift.png \
+  --save-best examples/plots/freqshift_best.json
+```
+### 4) Plot loss-channel composition (from saved params)
+```bash
+python -m cpwfit.models.qint_loss_channels \
+  --best examples/plots/qint_best.json \
+  --power -160 \
+  --out examples/plots/qint_channels.png
+```
+
+
+
 
 
