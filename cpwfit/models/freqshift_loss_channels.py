@@ -15,7 +15,7 @@ plt.rcParams.update({
 kB = 1.380649e-23
 h  = 6.62607015e-34
 pi = np.pi
-f0 = 5_619_901_372.0  # Hz
+f0 = 5619901372.0  # Hz
 C  = h * f0 / (2 * pi * kB)  # convenience: h f0 / (2π kB)
 
 # ---- Model ----
