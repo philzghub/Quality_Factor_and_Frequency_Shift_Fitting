@@ -4,8 +4,20 @@ version = "0.0.1"
 description = "CPW resonator fitting: Qi 7-parameter model & frequency shift."
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = ["numpy","scipy","pandas","matplotlib"]
+dependencies = ["numpy", "scipy", "pandas", "matplotlib"]
+license = { file = "LICENSE" }
+
+[project.scripts]
+cpwfit-qint-semilog   = "cpwfit.models.qint_allcurves_semilog:main"
+cpwfit-qint-lin       = "cpwfit.models.qint_allcurves_lin:main"
+cpwfit-qint-channels  = "cpwfit.models.qint_loss_channels:main"
+cpwfit-qint-single    = "cpwfit.models.qint_singlecurve:main"
+cpwfit-freqshift      = "cpwfit.models.freqshift_loss_channels:main"
 
 [build-system]
-requires = ["setuptools>=68","wheel"]
+requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cpwfit*"]

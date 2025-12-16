@@ -3,7 +3,7 @@ from importlib.metadata import version, PackageNotFoundError
 
 # Public re-exports (nice UX)
 from . import plotting
-from .models import qint_singlecurve, qint_allcurves, qint_loss_channels, freqshift_loss_channels
+from .models import qint_singlecurve, qint_allcurves_lin, qint_allcurves_semilog , qint_loss_channels, freqshift_loss_channels
 
 # Optional version string
 try:

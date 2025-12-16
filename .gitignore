@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Packaging/build artifacts
+*.egg-info/
+dist/
+build/
+
+# Environments & OS
+.venv/
+.env/
+.DS_Store
+
+# Generated outputs
+examples/plots/
+*.png
+*.json
+
