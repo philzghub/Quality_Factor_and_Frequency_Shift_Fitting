@@ -87,9 +87,10 @@ $$
 
 # Quickstart
 
-## 1) Clone the repository (code + examples + CSVs)
+### **Requirements:** 
+> Python 3.9+ (tested), `numpy`, `scipy`, `pandas`, `matplotlib`.
 
-Install the virtual environment to isolate this project’s Python packages from your system so dependencies don’t conflict and installs stay reproducible.
+## 1) Clone the repository (code + examples + CSVs)
 
 ```bash
 git clone https://github.com/philzghub/Quality_Factor_and_Frequency_Shift_Fitting.git cpwfit
@@ -192,6 +193,7 @@ Adjust these to your own devices and needs:
 - Bounds & initial guesses: Adjust accordingly.
 - Dataset weights: e.g., weight −160 dBm ×5 for TLS sensitivity.
 - Don't forget to adjust directories if you change filenames 
+
 
 
 
