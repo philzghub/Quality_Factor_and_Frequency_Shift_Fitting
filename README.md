@@ -80,9 +80,11 @@ $$
 
 J. Gao, “The Physics of Superconducting Microwave Resonators,” PhD thesis, Caltech (2008).
 
+Note on methods: the $\Delta f_0/f_0$ model and the $Q_{int}$ model currently use different fitting strategies (stochastic mean-absolute error search vs. bounded non-linear least squares on relative error). This will likely be unified/adjusted in future versions.
+
 # Quickstart
 
-## 1) Install (one time)
+## 1) Installation (one time)
 
 Install the virtual environment to isolate this project’s Python packages from your system so dependencies don’t conflict and installs stay reproducible.
 
@@ -147,6 +149,13 @@ python -m cpwfit.models.qint_loss_channels \
   --power -160 \
   --out examples/plots/qint_channels.png
 ```
+
+## Configuration knobs for your adjustment 
+Adjust these to your own devices and needs:
+- Resonance frequency $f_0$: set to your device.
+- $\bar n$: adjust photon-number according to your own data/calculation (if you don't have the value, remove as a constant and add as parameter in the script)
+- Bounds & initial guesses: Adjust accordingly.
+- Dataset weights: e.g., weight −160 dBm ×5 for TLS sensitivity.
 
 
 
