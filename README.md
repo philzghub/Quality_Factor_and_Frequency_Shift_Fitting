@@ -27,7 +27,6 @@
 - [examples/plots/](examples/plots/) — example PNGs produced by the scripts and the example best-params JSONs
 
 # Equations used
-##Quality 
 
 The equations and fitting models used in this work are shown below. If you want to use different fitting equations also adjust the code and parameters accordingly. 
 
@@ -88,18 +87,52 @@ $$
 
 # Quickstart
 
-## 1) Installation (one time)
+## 1) Clone the repository (code + examples + CSVs)
 
 Install the virtual environment to isolate this project’s Python packages from your system so dependencies don’t conflict and installs stay reproducible.
 
 ```bash
-python -m venv .venv
+git clone https://github.com/philzghub/Quality_Factor_and_Frequency_Shift_Fitting.git cpwfit
+```
+## 2) Enter project folder
+
+```bash
+cd cpwfit
+```
+## 3) Create virtual environment
+
+```bash
+python3 -m venv .venv
+```
+## 4) Activate environment
+
+- macOS/Linux
+```bash
 source .venv/bin/activate
+```
+- Windows (PowerShell)
+```bash
+.\.venv\Scripts\Activate.ps1
+```
+## 5) Install dependencies & the package (editable mode)
+
+```bash
+pip install -U pip setuptools wheel
 pip install -e .
 ```
-## 2) Check correct data formats (CSV)
+## 6) Run the example scripts (optional, recommended)
 
-Import your own CSV files for the Qint and Δf/f. Match the example files for column names, delimiters, and layout.
+```bash
+# Qint, all curves (semilog)
+python -m cpwfit.models.qint_allcurves_semilog
+```
+## **Notes**
+- If your default Python is "python", replace "python3" with "python".
+- If you hit “pyproject.toml not found”, make sure you’re inside the repo root (ls should show pyproject.toml).
+
+## 7) When importing own data, check correct data formats (CSV)
+
+Import your own CSV files for the $Q_{int}$ and $\Delta f_0/ f_0$. Match the example files for column names, delimiters, and layout.
 
 Example: 
 
@@ -127,31 +160,29 @@ Temperature (mK);Power (dBm);Qint
 
 ### 1) Fit all Qint curves (semilog)
 ```bash
-python -m cpwfit.models.qint_allcurves_semilog \
-  --csv examples/csv_data/qint_all.csv \
-  --out examples/plots/qint_semilog.png \
-  --save-best examples/plots/qint_best.json
+# All Qint curves (semilog). 
+# Reads:  examples/csv_data/qint/{80,100,120,140,160}dBm.csv
+# Writes: examples/plots/qint/qint_log.png and qint_log.json
+python -m cpwfit.models.qint_allcurves_semilog
 ```
 ### 2) Fit a single curve
 ```bash
-python -m cpwfit.models.qint_singlecurve \
-  --csv examples/csv_data/qint_single.csv \
-  --out examples/plots/qint_single.png \
-  --save-best examples/plots/qint_single_best.json
+# Single-curve Qint fit.
+# Reads:  examples/csv_data/qint_single.csv  (adjust in script if needed)
+# Writes: examples/plots/qint/qint_single.png and qint_single.json
+python -m cpwfit.models.qint_singlecurve
 ```
 ### 3) Fit Frequency-shift
 ```bash
-python -m cpwfit.models.freqshift_loss_channels \
-  --csv examples/csv_data/freqshift.csv \
-  --out examples/plots/freqshift.png \
-  --save-best examples/plots/freqshift_best.json
+# Frequency-shift fit + components.
+# Reads:  examples/csv_data/freqshift/Freq_shift_nbonly.csv
+# Writes: examples/plots/freqshift/{freqshift.png,freqshift_loss_channels.png,freqshift.json}
+python -m cpwfit.models.freqshift_loss_channels
 ```
 ### 4) Plot loss-channel composition (from saved params)
 ```bash
-python -m cpwfit.models.qint_loss_channels \
-  --best examples/plots/qint_best.json \
-  --power -160 \
-  --out examples/plots/qint_channels.png
+# Loss-channel composition plot (uses saved params JSON)
+python -m cpwfit.models.qint_loss_channels
 ```
 
 ## Configuration knobs for your adjustment 
@@ -160,6 +191,8 @@ Adjust these to your own devices and needs:
 - $\bar n$: adjust photon-number according to your own data/calculation (if you don't have the value, remove as a constant and add as parameter in the script)
 - Bounds & initial guesses: Adjust accordingly.
 - Dataset weights: e.g., weight −160 dBm ×5 for TLS sensitivity.
+- Don't forget to adjust directories if you change filenames 
+
 
 
 
