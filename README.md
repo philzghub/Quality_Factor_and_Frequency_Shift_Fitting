@@ -44,6 +44,7 @@ $$Q_{\mathrm{TLS}}(\bar{n},T)
     \tanh\left(\frac{\hbar\omega}{2 k_{\mathrm{B}} T}\right)}}
        {\tanh\left(\frac{\hbar\omega}{2 k_{\mathrm{B}} T}\right)}$$
        
+K. D. Crowley et al., “Disentangling Losses in Tantalum Superconducting Circuits,” Physical Review X 13, 041005 (2023).
 
 ### QP term
 
@@ -52,8 +53,8 @@ $$Q_{\mathrm{QP}}(T)
   \frac{e^{\Delta_{0}/(k_{\mathrm B} T)}}
        {\sinh\left(\frac{\hbar\omega}{2 k_{\mathrm B} T}\right)
         K_{0}\left(\frac{\hbar\omega}{2 k_{\mathrm B} T}\right)}$$
-        
-Cite paper from which these equations have been derived
+
+K. D. Crowley et al., “Disentangling Losses in Tantalum Superconducting Circuits,” Physical Review X 13, 041005 (2023).
         
 ### TLS-induced frequency shift
 $$
@@ -65,10 +66,14 @@ $$
 \right]
 $$
 
+J. Gao, “The Physics of Superconducting Microwave Resonators,” PhD thesis, Caltech (2008).
+
 ### Quasiparticle-induced shift
 $$
 \left(\frac{\delta f(T)}{f_0}\right)_{\mathrm{QP}} = -\frac{1}{2}\frac{\Delta L}{L} = -\tfrac{1}{2}\alpha f_{0} \frac{\Delta L_{l,kin}}{L_{l,kin}}
 $$
+
+M. Scigliuzzo et al., “Phononic Loss in Superconducting Resonators on Piezoelectric Substrates,” New Journal of Physics 22, 053027 (2020).
 
 ### Total shift
 $$
@@ -77,10 +82,9 @@ $$
 \left(\frac{\delta f(T)}{f_0}\right)_{\mathrm{QP}}
 $$
 
+ ### **Note on methods**
+> The $\boldsymbol{\Delta f_0/f_0}$ model and the $Q_{\mathrm{int}}$ model currently use different fitting strategies (**stochastic mean-absolute error search** vs. **bounded non-linear least squares on relative error**). This will likely be unified/adjusted in future versions.
 
-J. Gao, “The Physics of Superconducting Microwave Resonators,” PhD thesis, Caltech (2008).
-
-Note on methods: the $\Delta f_0/f_0$ model and the $Q_{int}$ model currently use different fitting strategies (stochastic mean-absolute error search vs. bounded non-linear least squares on relative error). This will likely be unified/adjusted in future versions.
 
 # Quickstart
 
@@ -156,6 +160,7 @@ Adjust these to your own devices and needs:
 - $\bar n$: adjust photon-number according to your own data/calculation (if you don't have the value, remove as a constant and add as parameter in the script)
 - Bounds & initial guesses: Adjust accordingly.
 - Dataset weights: e.g., weight −160 dBm ×5 for TLS sensitivity.
+
 
 
 
