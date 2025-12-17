@@ -10,8 +10,8 @@ import json
 h = 6.62607015e-34
 hbar = h / (2 * np.pi)
 kB = 1.380649e-23
-f_res = 5.60157e9  # 5.61989 GHz
-NBAR_CONST = 1.35032  # nbar fixed constant (removed from fit parameters)
+f_res = 5.60157e9  # Adjust to your resonator frequency (Hz)
+NBAR_CONST = 1.35032  # fixed nbar (NOT taken from JSON) for 160 dBm input power, ADJUST AS NEEDED!!!
 
 # --- Paths (repo-relative) ---
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))

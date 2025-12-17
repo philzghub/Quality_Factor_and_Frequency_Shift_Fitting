@@ -18,7 +18,7 @@ plt.rcParams.update({
 })
 
 # -------- Config --------
-POWERS = ["80", "100", "120", "140", "160"]
+POWERS = ["80", "100", "120", "140", "160"] # !!!ADJUST AS NEEDED!!! (in dBm)
 # Base paths resolved relative to the repository root
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", ".."))
@@ -29,16 +29,19 @@ CSV_DIR = os.path.join(REPO_ROOT, "examples", "csv_data", "qint")
 OUTPUT_DIR = os.path.join(REPO_ROOT, "examples", "plots", "qint")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Weight 160 dBm 5×
+# Weight 160 dBm 5×, Vary as needed
 DATASET_WEIGHTS = {"160": 5.0}
 
-# Per-power nbar
+# Per-power nbar  !!ADJUST AS NEEDED!!
 NBAR_BY_POWER = {
-    "80": 1.45466e8, "100": 1.43609183602e6, "120": 1.413910552e4,
-    "140": 138.34054, "160": 1.35032,
-}
+    "80": 1.45466e8, 
+    "100": 1.43609183602e6, 
+    "120": 1.413910552e4,
+    "140": 138.34054, 
+    "160": 1.35032,
+} 
 
-# Bounds and initial guesses (shared across powers)
+# Bounds and initial guesses (shared across powers), Adjust as deemed appropriate
 BOUNDS = {
     "Q_TLS_0": (1e5, 5e8), "beta1": (1e-3, 25), "beta2": (1e-5, 2e3),
     "D": (1.0, 5e4), "Q_other": (1e4, 5e9), "A_QP": (1e-8, 1e9), "Tc": (0.5, 12.0),
@@ -57,7 +60,7 @@ EXP_CLIP = 700
 # -------- Physics --------
 kB = 1.380649e-23
 hbar = 6.62607015e-34 / (2 * np.pi)
-f_res = 5.61989e9
+f_res = 5.61989e9 # Adjust to your resonator frequency here (Hz)
 
 # -------- Models --------
 def Q_TLS(T, Q_TLS_0, beta1, beta2, D, nbar):

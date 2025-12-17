@@ -18,7 +18,7 @@ plt.rcParams.update({
 })
 
 # -------- Config --------
-POWERS = ["80", "100", "120", "140", "160"]
+POWERS = ["80", "100", "120", "140", "160"] # !!!ADJUST AS NEEDED!!!
 # Base paths resolved relative to the repository root
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", ".."))
@@ -29,13 +29,16 @@ CSV_DIR = os.path.join(REPO_ROOT, "examples", "csv_data", "qint")
 OUTPUT_DIR = os.path.join(REPO_ROOT, "examples", "plots", "qint")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Weight 160 dBm 5×
+# Weight 160 dBm 5×, Vary as needed
 DATASET_WEIGHTS = {"160": 5.0}
 
-# Per-power nbar
+# Per-power nbar  !!ADJUST AS NEEDED!!
 NBAR_BY_POWER = {
-    "80": 1.45466e8, "100": 1.43609183602e6, "120": 1.413910552e4,
-    "140": 138.34054, "160": 1.35032,
+    "80": 1.45466e8, 
+    "100": 1.43609183602e6, 
+    "120": 1.413910552e4,
+    "140": 138.34054, 
+    "160": 1.35032,
 }
 
 # Bounds and initial guesses (shared across powers)

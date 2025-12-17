@@ -7,15 +7,18 @@ from matplotlib.ticker import MultipleLocator
 
 # ---- Styling ----
 plt.rcParams.update({
-    "font.size": 17, "axes.labelsize": 21, "legend.fontsize": 17,
-    "xtick.labelsize": 17, "ytick.labelsize": 17
+    "font.size": 17, 
+    "axes.labelsize": 21, 
+    "legend.fontsize": 17,
+    "xtick.labelsize": 17, 
+    "ytick.labelsize": 17
 })
 
 # ---- Constants ----
 kB = 1.380649e-23
 h  = 6.62607015e-34
 pi = np.pi
-f0 = 5619901372.0  # Hz
+f0 = 5619901372.0  # Adjust to your resonator frequency here (Hz)
 C  = h * f0 / (2 * pi * kB)  # convenience: h f0 / (2π kB)
 
 # ---- Model ----

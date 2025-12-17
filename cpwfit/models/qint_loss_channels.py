@@ -20,8 +20,8 @@ plt.rcParams.update({
 h = 6.62607015e-34
 hbar = h / (2 * np.pi)
 kB = 1.380649e-23
-f_res = 5.61989e9
-NBAR_CONST = 1.35032  # fixed nbar (NOT taken from JSON)
+f_res = 5.61989e9  # Adjust to your resonator frequency here (Hz)
+NBAR_CONST = 1.35032  # fixed nbar (NOT taken from JSON) for 160 dBm input power, ADJUST AS NEEDED!!!
 
 # --- Models (using NBAR_CONST) ---
 def Q_TLS(T, Q_TLS_0, beta1, beta2, D):
