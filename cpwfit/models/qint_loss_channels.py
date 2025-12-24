@@ -28,7 +28,7 @@ def Q_TLS(T, Q_TLS_0, beta1, beta2, D):
     omega = 2 * np.pi * f_res
     arg = hbar * omega / (2 * kB * T)
     tanh_arg = np.tanh(arg)
-    core = 1.0 + (NBAR_CONST * beta2 / (D * T**beta1)) * tanh_arg
+    core = 1.0 + (NBAR_CONST ** beta2 / (D * T**beta1)) * tanh_arg
     return Q_TLS_0 * (np.sqrt(core) / tanh_arg)
 
 def Q_QP(T, A_QP, Tc):
@@ -59,22 +59,25 @@ def load_data(csv_path):
     Q = df[qcol].to_numpy()
     return T, Q
 
-def load_fixed_params(fixed_json_path, expected, required_keys):
+def load_fixed_params(fixed_json_path, required_keys):
+    """Load fixed parameters strictly from JSON.
+
+    - `fixed_json_path` must exist and contain a top-level key "params".
+    - All `required_keys` must be present in that dict.
+    """
     with open(fixed_json_path, "r") as f:
         fixed = json.load(f)
     if "params" not in fixed:
         raise KeyError("Key 'params' missing in fixed params JSON.")
     p = fixed["params"]
+
+    # Enforce presence of all required keys
     missing = [k for k in required_keys if k not in p]
     if missing:
         raise KeyError(f"Missing parameter keys in JSON: {missing}")
-    # Use JSON if present; override to EXPECTED if any difference
-    params = {k: float(p.get(k, expected[k])) for k in required_keys}
-    mismatch = [k for k in required_keys if not np.isclose(params[k], expected[k], rtol=0, atol=0)]
-    if mismatch:
-        print(f"Overriding to provided weighted params for: {', '.join(mismatch)}")
-        params.update(expected)
-    return params
+
+    # Return only the required keys, as floats
+    return {k: float(p[k]) for k in required_keys}
 
 def crosspoint_upper_y(Q_tls_curve, Q_qp_curve, margin=1.30):
     # Find TLS–QP crossing (or closest approach), compute y-upper (×1e7 units) with margin
@@ -120,16 +123,9 @@ if fixed_json_path is None:
 T_data, Qint_data = load_data(csv_path)
 
 REQUIRED = ["Q_TLS_0", "beta1", "beta2", "D", "Q_other", "A_QP", "Tc"]
-EXPECTED = {
-    "Q_TLS_0": 702034.5791713039,
-    "beta1":   0.5633765494406937,
-    "beta2":   0.31438135746391943,
-    "D":       1.0771171131840873,
-    "Q_other": 42738370.852098696,
-    "A_QP":    450.4365833076074,
-    "Tc":      6.0333925474881,
-}
-params = load_fixed_params(fixed_json_path, EXPECTED, REQUIRED)
+
+# JSON must fully define all required keys
+params = load_fixed_params(fixed_json_path, REQUIRED)
 
 Q_TLS_0 = params["Q_TLS_0"]; beta1 = params["beta1"]; beta2 = params["beta2"]
 D = params["D"]; Q_other = params["Q_other"]; A_QP = params["A_QP"]; Tc = params["Tc"]
