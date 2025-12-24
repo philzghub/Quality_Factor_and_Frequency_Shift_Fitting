@@ -9,7 +9,7 @@ from .models import qint_singlecurve, qint_allcurves_lin, qint_allcurves_semilog
 try:
     __version__ = version("cpwfit")
 except PackageNotFoundError:
-    __version__ = "0.0.0"
+    __version__ = "0.0.2"
 
 __all__ = [
     "plotting",
